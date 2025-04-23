@@ -5,7 +5,7 @@ interface BaseProps {
   title: string;
   isExpanded: boolean;
   onToggle: () => void;
-  filters?: any
+  filters?: {title: string, onClick: () => void, isSelected: boolean}[]
 }
 
 interface SubSectionHeaderProps extends BaseProps {
@@ -92,7 +92,7 @@ export function SectionHeader({ onToggle, isExpanded, title, filters }: BaseProp
         </button>
       </div>
 
-      {filters?.length > 0 && (
+      {filters && filters?.length > 0 && (
         <div className={`transition-all duration-300 overflow-hidden ${isExpanded ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'}`}>
           <SelectFilters filters={filters} isExpanded={isExpanded} />
         </div>
